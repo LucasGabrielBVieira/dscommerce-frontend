@@ -1,9 +1,9 @@
-import Catalog from "./routes/Catalog/index.tsx";
+import ProductDetails from "./routes/ProductDetailes/index.tsx";
 
 function App() {
 
   return (
-      <Catalog />
+      <ProductDetails />
   );
 
 }
