@@ -1,3 +1,7 @@
 .dsc-link-client {
   color: var(--dsc-color-font-primary);
 }
+
+.dsc-link-h1:focus, .dsc-link-h1:visited {
+  color: var(--dsc-color-font-primary);
+}
