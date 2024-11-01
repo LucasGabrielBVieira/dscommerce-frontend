@@ -3,7 +3,7 @@ import ButtonInverse from "../../../components/ButtonInverse";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailesCard";
 import * as productService from "../../../services/product-service.ts";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ProductDTO } from "../../../models/product.ts";
 import { useEffect, useState } from "react";
@@ -13,13 +13,16 @@ function ProductDetails() {
 
   const [product, setProduct] = useState<ProductDTO>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     productService.findById(Number(params.productId))
       .then((response) => {
         setProduct(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data);
+        navigate("/");
       });
   }, []);
 
