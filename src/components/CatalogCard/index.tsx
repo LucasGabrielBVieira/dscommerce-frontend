@@ -25,3 +25,4 @@ function CatalogCard({ product }: Props) {
 }
 
 export default CatalogCard;
+ 
