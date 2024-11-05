@@ -10,6 +10,11 @@ function Catalog() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
   useEffect(() => {
+
+    // localStorage.setItem("category", JSON.stringify(objTest) );
+    const obj = JSON.parse(localStorage.getItem("category") || " ");
+    console.log(obj.name);
+
     productService
       .findAll()
       .then((response) => {
