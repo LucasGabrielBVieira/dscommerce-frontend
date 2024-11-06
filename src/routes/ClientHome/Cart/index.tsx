@@ -1,25 +1,15 @@
+import * as cartService from '../../../services/cart-service'
+import { useEffect, useState } from 'react';
 import './style.css'
+import { OrderDTO, OrderItemDTO } from '../../../models/order';
 
-const cart = {
-  items: [
-    {
-      productId: 4,
-      quantity: 1,
-      name: "PC Gamer",
-      price: 1200,
-      imgUrl: "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg"
-    },
-    {
-      productId: 5,
-      quantity: 2,
-      name: "Rails for Dummies",
-      price: 100.99,
-      imgUrl: "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg"
-    }
-  ]
-}
+const item1: OrderItemDTO = new OrderItemDTO(4, 1, 1200, "PC Gamer", "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg");
+const item2: OrderItemDTO = new OrderItemDTO(5, 2, 100.99, "Rails for Dummies", "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg");
 
 function Cart() {
+
+  const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
+
 
   return (
     <main>
