@@ -9,12 +9,17 @@ function Cart() {
 
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
+  function handleClearClick() {
+    cartService.clearCart();
+    setCart(cartService.getCart());
+  }
+
   return (
     <main>
       <section id="cart-container" className="dsc-container">
         {
-          cart.items.length === 0 
-            ?  (
+          cart.items.length === 0
+            ? (
               <div>
                 <h2 className='dsc-section-title dsc-mb20'>Seu carrinho está vazio</h2>
               </div>
@@ -46,11 +51,12 @@ function Cart() {
             )
         }
         <div className="dsc-btn-page-container">
+          <div className="dsc-btn dsc-btn-white" onClick={handleClearClick}>Limpar Carrinho</div>
           <div className="dsc-btn dsc-btn-blue">Finalizar Pedido</div>
           <Link to="/catalog">
             <div className="dsc-btn dsc-btn-white">Continuar Comprando</div>
           </Link>
-          
+
         </div>
       </section>
     </main>
