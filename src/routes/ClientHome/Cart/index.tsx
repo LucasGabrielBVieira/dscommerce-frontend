@@ -1,46 +1,56 @@
 import * as cartService from '../../../services/cart-service'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './style.css'
-import { OrderDTO, OrderItemDTO } from '../../../models/order';
+import { OrderDTO } from '../../../models/order';
+import { Link } from 'react-router-dom';
 
-const item1: OrderItemDTO = new OrderItemDTO(4, 1, 1200, "PC Gamer", "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg");
-const item2: OrderItemDTO = new OrderItemDTO(5, 2, 100.99, "Rails for Dummies", "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg");
 
 function Cart() {
 
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
-
   return (
     <main>
       <section id="cart-container" className="dsc-container">
-        <div className="dsc-card dsc-mb20">
-          {
-            cart.items.map(item => (
-              <div key={item.productId} className="dsc-cart-item-container dsc-line-bottom">
-                <div className="dsc-cart-item-left">
-                  <img src={item.imgUrl} alt={item.name} />
-                  <div className="dsc-cart-item-description">
-                    <h3>{item.name}</h3>
-                    <div className="dsc-cart-item-qtd-container">
-                      <div className="dsc-cart-item-qtd-button">-</div>
-                      <p>{item.quantity}</p>
-                      <div className="dsc-cart-item-qtd-button">+</div>
+        {
+          cart.items.length === 0 
+            ?  (
+              <div>
+                <h2 className='dsc-section-title dsc-mb20'>Seu carrinho está vazio</h2>
+              </div>
+            ) : (
+              <div className="dsc-card dsc-mb20">
+                {
+                  cart.items.map(item => (
+                    <div key={item.productId} className="dsc-cart-item-container ds c-line-bottom">
+                      <div className="dsc-cart-item-left">
+                        <img src={item.imgUrl} alt={item.name} />
+                        <div className="dsc-cart-item-description">
+                          <h3>{item.name}</h3>
+                          <div className="dsc-cart-item-qtd-container">
+                            <div className="dsc-cart-item-qtd-button">-</div>
+                            <p>{item.quantity}</p>
+                            <div className="dsc-cart-item-qtd-button">+</div>
+                          </div>
+                        </div>
+                      </div><div className="dsc-cart-item-rigth">
+                        R$ {item.subTotal.toFixed(2)}
+                      </div>
                     </div>
-                  </div>
-                </div><div className="dsc-cart-item-rigth">
-                  R$ {(item.price * item.quantity).toFixed(2)}
+                  ))
+                }
+                <div className="dsc-cart-total-container">
+                  <h3>R$ {cart.total.toFixed(2)}</h3>
                 </div>
               </div>
-            ))
-          }
-          <div className="dsc-cart-total-container">
-            <h3>R$15000,00</h3>
-          </div>
-        </div>
+            )
+        }
         <div className="dsc-btn-page-container">
           <div className="dsc-btn dsc-btn-blue">Finalizar Pedido</div>
-          <div className="dsc-btn dsc-btn-white">Continuar Comprando</div>
+          <Link to="/catalog">
+            <div className="dsc-btn dsc-btn-white">Continuar Comprando</div>
+          </Link>
+          
         </div>
       </section>
     </main>

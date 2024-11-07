@@ -204,6 +204,9 @@ nav a {
   justify-content: center;
 }
 
+.dsc-btn-pointer {
+  cursor: pointer;
+}
 
 /*--------------------------------------------*/
 /* Search Bar Styles */
@@ -375,4 +378,11 @@ nav a {
   .dsc-table tbody {
     font-size: 16px;
   }
+}
+
+/*--------------------------------------------*/
+  /* Link Styles */
+
+a {
+  text-decoration: none;
 }
