@@ -31,3 +31,15 @@ export function increaseItem(productId: number) {
     cartRepository.saveCart(cart);
   }
 }
+
+export function decreaseItem(productId: number) {
+  const cart = cartRepository.get();
+  const item = cart.items.find((i) => i.productId === productId)
+  if (item) {
+    item.quantity--;
+    if (item.quantity < 1) {
+      cart.items = cart.items.filter((i) => i.productId !== productId);
+    }
+    cartRepository.saveCart(cart);
+  }
+}
