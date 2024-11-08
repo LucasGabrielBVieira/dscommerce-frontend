@@ -14,6 +14,11 @@ function Cart() {
     setCart(cartService.getCart());
   }
 
+  function handleIncriaseItem(productId: number) {
+    cartService.increaseItem(productId);
+    setCart(cartService.getCart());
+  }
+
   return (
     <main>
       <section id="cart-container" className="dsc-container">
@@ -35,7 +40,7 @@ function Cart() {
                           <div className="dsc-cart-item-qtd-container">
                             <div className="dsc-cart-item-qtd-button">-</div>
                             <p>{item.quantity}</p>
-                            <div className="dsc-cart-item-qtd-button">+</div>
+                            <div onClick={() => handleIncriaseItem(item.productId)} className="dsc-cart-item-qtd-button">+</div>
                           </div>
                         </div>
                       </div><div className="dsc-cart-item-rigth">

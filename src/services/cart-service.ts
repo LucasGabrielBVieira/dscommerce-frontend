@@ -22,3 +22,12 @@ export function addProductToCart(product: ProductDTO) {
 export function clearCart() {
   cartRepository.clear();
 }
+
+export function increaseItem(productId: number) {
+  const cart = cartRepository.get();
+  const item = cart.items.find((i) => i.productId === productId)
+  if (item) {
+    item.quantity++;
+    cartRepository.saveCart(cart);
+  }
+}
