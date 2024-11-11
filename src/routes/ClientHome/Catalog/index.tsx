@@ -11,7 +11,7 @@ function Catalog() {
 
   useEffect(() => {
     productService
-      .findAll()
+      .findPageRequest(0, "r")
       .then((response) => {
         setProducts(response.data.content);
       })
