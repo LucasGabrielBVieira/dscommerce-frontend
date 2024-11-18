@@ -3,6 +3,7 @@ import Catalog from "./routes/ClientHome/Catalog/index.tsx";
 import ProductDetails from "./routes/ClientHome/ProductDetailes/index.tsx";
 import ClientHome from "./routes/ClientHome/index.tsx";
 import Cart from "./routes/ClientHome/Cart/index.tsx";
+import Login from "./routes/ClientHome/Login/index.tsx";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                     <Route index element={<Catalog />} />
                     <Route path="catalog" element={<Catalog />} />
                     <Route path="cart" element={<Cart />} />
+                    <Route path="login" element={<Login />} />
                     <Route path="product-details/:productId" element={<ProductDetails />} />
                 </Route>
                 <Route path="*" element={<Navigate to="/" />} />
