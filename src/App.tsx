@@ -4,6 +4,8 @@ import ProductDetails from "./routes/ClientHome/ProductDetailes/index.tsx";
 import ClientHome from "./routes/ClientHome/index.tsx";
 import Cart from "./routes/ClientHome/Cart/index.tsx";
 import Login from "./routes/ClientHome/Login/index.tsx";
+import { Admin } from "./routes/Admin/index.tsx";
+import AdminHome from "./routes/Admin/AdminHome/index.tsx";
 
 function App() {
     return (
@@ -15,6 +17,9 @@ function App() {
                     <Route path="cart" element={<Cart />} />
                     <Route path="login" element={<Login />} />
                     <Route path="product-details/:productId" element={<ProductDetails />} />
+                </Route>
+                <Route path='/admin/' element={<Admin/>}>
+                    <Route index element={<AdminHome/>}/>
                 </Route>
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
