@@ -16,7 +16,7 @@ function Login() {
         loginRequest(formData);
         authService.loginRequest(formData) 
             .then(response => {
-                console.log(response.data);
+                authService.saveAccessToken(response.data.access_token);
             })
             .catch(error => {
                 console.error(error);
